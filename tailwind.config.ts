@@ -71,11 +71,12 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-subtle': 'var(--gradient-subtle)'
+				'gradient-card': 'var(--gradient-card)'
 			},
 			boxShadow: {
 				'card': 'var(--shadow-card)',
-				'card-hover': 'var(--shadow-card-hover)'
+				'card-hover': 'var(--shadow-card-hover)',
+				'button': 'var(--shadow-button)'
 			},
 			transitionProperty: {
 				'smooth': 'var(--transition-smooth)'
