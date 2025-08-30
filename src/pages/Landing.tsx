@@ -11,7 +11,7 @@ const Landing = () => {
       <Card className="w-full max-w-md bg-gradient-card shadow-card-hover border-border">
         <CardContent className="p-8 text-center space-y-8">
           <div>
-            <h1 className="text-4xl font-bold text-foreground mb-2">FourAge</h1>
+            <h1 className="text-4xl font-bold text-foreground mb-2">SentinelMind</h1>
             <div className="w-16 h-1 bg-gradient-primary mx-auto rounded-full"></div>
           </div>
           
