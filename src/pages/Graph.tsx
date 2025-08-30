@@ -10,41 +10,55 @@ const Graph = () => {
   const navigate = useNavigate();
 
   const SimpleGraph = () => (
-    <div className="relative w-full h-96 bg-gradient-card rounded-lg border border-border p-8">
-      <svg viewBox="0 0 800 300" className="w-full h-full">
-        {/* Simple attack flow */}
-        <defs>
-          <marker id="arrowhead" markerWidth="10" markerHeight="7" 
-            refX="10" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="hsl(200 100% 60%)" />
-          </marker>
-        </defs>
-        
-        {/* Nodes */}
-        <circle cx="100" cy="150" r="40" fill="hsl(220 13% 16%)" stroke="hsl(200 100% 60%)" strokeWidth="2"/>
-        <text x="100" y="155" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="12">Entry</text>
-        
-        <circle cx="300" cy="150" r="40" fill="hsl(220 13% 16%)" stroke="hsl(200 100% 60%)" strokeWidth="2"/>
-        <text x="300" y="155" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="12">System</text>
-        
-        <circle cx="500" cy="150" r="40" fill="hsl(220 13% 16%)" stroke="hsl(200 100% 60%)" strokeWidth="2"/>
-        <text x="500" y="155" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="12">Data</text>
-        
-        <circle cx="700" cy="150" r="40" fill="hsl(220 13% 16%)" stroke="hsl(0 84.2% 60.2%)" strokeWidth="2"/>
-        <text x="700" y="155" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="12">Exit</text>
-        
-        {/* Arrows */}
-        <line x1="140" y1="150" x2="260" y2="150" stroke="hsl(200 100% 60%)" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-        <line x1="340" y1="150" x2="460" y2="150" stroke="hsl(200 100% 60%)" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-        <line x1="540" y1="150" x2="660" y2="150" stroke="hsl(0 84.2% 60.2%)" strokeWidth="2" markerEnd="url(#arrowhead)"/>
-        
-        {/* Labels */}
-        <text x="200" y="140" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="10">Access</text>
-        <text x="400" y="140" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="10">Exploit</text>
-        <text x="600" y="140" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="10">Exfiltrate</text>
-      </svg>
-    </div>
-  );
+  <div className="relative w-full h-96 bg-gradient-card rounded-lg border border-border p-4 overflow-auto">
+    <svg viewBox="0 0 900 200" className="w-full h-full min-w-[700px]">
+      <defs>
+        <marker id="arrowhead-simple" markerWidth="10" markerHeight="7" 
+          refX="10" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="hsl(200 100% 60%)" />
+        </marker>
+      </defs>
+
+      {/* Entry */}
+      <rect x="50" y="70" width="140" height="60" rx="8"
+        fill="hsl(220 13% 16%)" stroke="hsl(200 100% 60%)" strokeWidth="2" />
+      <text x="120" y="95" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="14" fontWeight="bold">Entry</text>
+      <text x="120" y="112" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">User Access</text>
+
+      {/* System */}
+      <rect x="280" y="70" width="140" height="60" rx="8"
+        fill="hsl(220 13% 16%)" stroke="hsl(200 100% 60%)" strokeWidth="2" />
+      <text x="350" y="95" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="14" fontWeight="bold">System</text>
+      <text x="350" y="112" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">Exploited</text>
+
+      {/* Data */}
+      <rect x="510" y="70" width="140" height="60" rx="8"
+        fill="hsl(220 13% 16%)" stroke="hsl(200 100% 60%)" strokeWidth="2" />
+      <text x="580" y="95" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="14" fontWeight="bold">Data</text>
+      <text x="580" y="112" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">Compromised</text>
+
+      {/* Exit */}
+      <rect x="740" y="70" width="140" height="60" rx="8"
+        fill="hsl(220 13% 16%)" stroke="hsl(0 84.2% 60.2%)" strokeWidth="2" />
+      <text x="810" y="95" textAnchor="middle" fill="hsl(210 40% 98%)" fontSize="14" fontWeight="bold">Exit</text>
+      <text x="810" y="112" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">Exfiltration</text>
+
+      {/* Arrows */}
+      <line x1="190" y1="100" x2="280" y2="100"
+        stroke="hsl(200 100% 60%)" strokeWidth="2" markerEnd="url(#arrowhead-simple)" />
+      <line x1="420" y1="100" x2="510" y2="100"
+        stroke="hsl(200 100% 60%)" strokeWidth="2" markerEnd="url(#arrowhead-simple)" />
+      <line x1="650" y1="100" x2="740" y2="100"
+        stroke="hsl(0 84.2% 60.2%)" strokeWidth="2" markerEnd="url(#arrowhead-simple)" />
+
+      {/* Labels above arrows */}
+      <text x="235" y="60" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">Access</text>
+      <text x="465" y="60" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">Exploit</text>
+      <text x="695" y="60" textAnchor="middle" fill="hsl(215 20.2% 65.1%)" fontSize="11">Exfiltrate</text>
+    </svg>
+  </div>
+);
+
 
   const DetailedGraph = () => (
     <div className="relative w-full h-96 bg-gradient-card rounded-lg border border-border p-4 overflow-auto">
